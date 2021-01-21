@@ -1,17 +1,49 @@
-import express,{Router} from 'express';
-import containerRouter from './routes/containers';
-import imageRouter from './routes/images';
-import networkRouter from './routes/networks';
-import volumeRouter from './routes/volumes';
-import authRouter from './routes';
+import bodyParser from 'body-parser'
+import express from 'express'
+import session from 'express-session'
+import sslify from 'express-sslify'
+import http from 'http'
+import path from 'path'
+import api from './api-dockui/routes'
+import config from './config'
 
-const app = express();
-const router = 
+const app = express()
+const server = http.createServer(app)
 
-app.use('/', authRouter);
-app.use('/container', containerRouter);
-app.use('/image', imageRouter);
-app.use('/network', networkRouter);
-app.use('/volume', volumeRouter);
+const port = config.port
+const host = config.host
+const assets = config.environment === 'production' ? 'dist' : 'build'
 
-export default app;
+if(config.https)
+{
+  app.use(sslify.HTTPS(
+    {
+      trustProtoHeader: config.httpsProto
+    }
+  ))
+}
+
+app.use(express.static(path.join(__dirname, assets)))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(session({
+  key: 'docker-ui.sid',
+  secret: config.secret,
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use('/', api)
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, `${assets}/index.html`))
+})
+
+server.listen(port, host, err => {
+  if(error)
+    throw error 
+  console.info(`Listening to  ${host}:${port}`);
+})
+
