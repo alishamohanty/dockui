@@ -1,6 +1,6 @@
 import config from 'config'
 
-module.exports = {
+export {
   middleware,
   login,
   logout 

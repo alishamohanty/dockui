@@ -1,6 +1,6 @@
 import { request } from '../../library/request';
 
-module.exports = {
+export {
   start,
   stop,
   list,
