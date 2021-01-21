@@ -1,16 +1,16 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import indexRouter from './routes/index';
+import containerRouter from './routes/containers';
+import imageRouter from './routes/images';
+import networkRouter from './routes/networks';
+import volumeRouter from './routes/volumes';
+import authRouter from './routes';
 
 const app = express();
 
-app.use(logger('dev'));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.use('/', indexRouter);
+app.use('/', authRouter);
+app.use('/container', containerRouter);
+app.use('/image', imageRouter);
+app.use('/network', networkRouter);
+app.use('/volume', volumeRouter);
 
 export default app;
