@@ -1,4 +1,4 @@
-import request from "../../library/resquest"
+
 export {
   list,
   read,

@@ -1,4 +1,4 @@
-import { request } from '../../library/request';
+import { request } from '../../library/resquest';
 
 export {
   start,

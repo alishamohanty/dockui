@@ -1,11 +1,11 @@
 import express from 'express';
 const router = express.Router();
-import { middleware } from '../servcies/auth'
-import * as auth from '../servcies/auth'
-import * as network from '../servcies/network'
-import * as volume from '../servcies/volume'
-import * as container from '../servcies/container'
-import * as image from '../servcies/image'
+import { middleware } from './servcies/auth'
+import * as auth from './servcies/auth'
+import * as network from './servcies/network'
+import * as volume from './servcies/volume'
+import * as container from './servcies/container'
+import * as image from './servcies/image'
 
 router.post('/login', auth.login);
 router.delete ('/logout', auth.logout);

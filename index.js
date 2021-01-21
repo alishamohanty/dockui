@@ -41,7 +41,7 @@ app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, `${assets}/index.html`))
 })
 
-server.listen(port, host, err => {
+server.listen(port, host, error => {
   if(error)
     throw error 
   console.info(`Listening to  ${host}:${port}`);

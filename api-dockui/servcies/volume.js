@@ -1,4 +1,4 @@
-const request = require('lib/request')
+import request from "../../library/resquest"
 
 export {
   list,

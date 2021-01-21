@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": false,
   "scripts": {
+    "start": "nodemon --exec babel-node .",
     "server": "nodemon --exec babel-node ./build/bin/www",
     "build": "npm-run-all clean transpile",
     "clean": "rimraf build",
