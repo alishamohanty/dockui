@@ -6,7 +6,7 @@
     "server": "nodemon --exec babel-node ./build/bin/www",
     "build": "npm-run-all clean transpile",
     "clean": "rimraf build",
-    "transpile":"babel ./server-dockui --out-dir build",
+    "transpile": "babel ./server-dockui --out-dir build",
     "dev": "npm-run-all build server",
     "dev-run": "nodemon --exec babel-node ./server-dockui/bin/www"
   },
@@ -15,6 +15,7 @@
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "config": "^3.3.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -25,4 +26,3 @@
     "rimraf": "^3.0.2"
   }
 }
-
