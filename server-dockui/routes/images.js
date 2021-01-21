@@ -1,15 +1,11 @@
 import express from 'express';
 const router = express.Router();
+import * as image from '../servcies/image'
+import { middleware } from '../servcies/auth'
 
-/* GET home page. */
-router.get('/images', async(req, res) => {
-  try {
-    res.send(
-      await request('get', 'images/json')
-    );
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+router.get('/images', middleware, image.list);
+router.get('/image/:id', middleware, image.read);
+router.delete('/image/:id', middleware, image.destroy);
+router.post('/images/', middleware, image.prune);
 
 export default router;

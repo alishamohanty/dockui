@@ -1,6 +1,5 @@
 import request from "../../library/resquest"
-
-module.exports = {
+export {
   list,
   read,
   destroy,
