@@ -1,6 +1,6 @@
 const request = require('lib/request')
 
-module.exports = {
+export {
   list,
   create,
   read,
