@@ -1,4 +1,4 @@
-import request from "../../library/resquest"
+import request from "../../library/request"
 
 export {
   list,
